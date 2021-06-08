@@ -10,6 +10,7 @@ services:
       - HOST=db
       - USER=frazer-odoo
       - PASSWORD=password
+      - PORT=5432
     volumes:
       - ./odoo-web-data:/var/lib/odoo
       - ./config:/etc/odoo
@@ -31,4 +32,3 @@ services:
 
 networks:
   frazer-network:
-    name: "frazer-network"
