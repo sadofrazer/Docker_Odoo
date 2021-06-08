@@ -12,9 +12,8 @@ services:
       - PASSWORD=password
       - PORT=5432
     volumes:
-      - ./odoo-web-data:/var/lib/odoo
-      - ./config:/etc/odoo
-      - ./addons:/mnt/extra-addons
+      - odoo-web-data:/var/lib/odoo
+
     networks:
       - frazer-network
 
@@ -26,9 +25,13 @@ services:
       - POSTGRES_USER=frazer-odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - ./odoo-db-data:/var/lib/postgresql/data/pgdata
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
     networks:
       - frazer-network
 
 networks:
   frazer-network:
+
+volumes:
+  odoo-web-data:
+  odoo-db-data:
