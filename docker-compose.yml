@@ -6,13 +6,18 @@ services:
       - db
     ports:
       - "8080:8069"
-    links:
-      - db:db
+    environment:
+      - HOST=db
+      - USER=frazer-odoo
+      - PASSWORD=password
+      - PORT=5432
     volumes:
       - ./odoo-web-data:/var/lib/odoo
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
-    
+    networks:
+      - frazer-network
+
   db:
     image: postgres:10
     environment:
@@ -22,3 +27,8 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - ./odoo-db-data:/var/lib/postgresql/data/pgdata
+    networks:
+      - frazer-network
+
+networks:
+  frazer-network:
