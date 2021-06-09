@@ -50,7 +50,7 @@ services:
     volumes:
      - /sessions
     networks:
-      - frazer-network
+      - wordpress-network
 
   nginx-proxy:
     image: jwilder/nginx-proxy
