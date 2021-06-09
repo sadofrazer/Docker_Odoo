@@ -4,8 +4,8 @@ services:
     image: odoo
     depends_on:
       - db
-    ports:
-      - "8080:8069"
+   # ports:
+    #  - "8080:8069"
     tty: true
     command: -- --dev=reload
     environment:
