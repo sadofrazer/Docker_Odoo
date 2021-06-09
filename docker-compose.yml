@@ -34,8 +34,10 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=frazer-odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
+      - TZ=Europe/Paris
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - frazer-network
 
