@@ -20,7 +20,7 @@ services:
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./o_addons:/mnt/extra-addons
-      - ./o_etc:/etc/odoo
+      - ./o_config:/etc/odoo
       - /etc/localtime:/etc/localtime:ro
       - ./backup:/backup
 
@@ -68,8 +68,7 @@ services:
     environment:
       DEFAULT_EMAIL: sadofrazer@gmail.com
       NGINX_PROXY_CONTAINER: nginx-proxy
-
-      
+   
 networks:
   frazer-network:
 
