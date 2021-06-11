@@ -16,7 +16,7 @@ services:
       - emile-web-data:/var/lib/odoo
 
     networks:
-      - emile-network1
+      - emile-network
 
   emile_db:
     image: postgres:10
@@ -32,8 +32,8 @@ services:
       - emile-network
 
 networks:
-  emile-network1:
+  emile-network:
 
 volumes:
-  emile-web-data1:
-  emile-db-data1:
+  emile-web-data:
+  emile-db-data:
