@@ -8,7 +8,7 @@ services:
     ports:
       - "8080:8069"
     environment:
-      - HOST=db
+      - HOST=emile_db
       - USER=frazer-odoo
       - PASSWORD=password
       - PORT=5432
