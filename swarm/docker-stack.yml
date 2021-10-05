@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+
+  odoo:
+    image: odoo
+    depends_on:
+      - db
+    ports:
+      - "8080:8069"
+    environment:
+      HOST: db
+      PASSWORD: "frazer-odoo"
+      USER: "frazer"
+      PORT: "5432"
+    volumes:
+      - odoo-data:/var/lib/odoo
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: "frazer"
+      POSTGRES_PASSWORD: "frazer-odoo"
+      POSTGRES_DB: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - db-data:/var/lib/postgresql/data/pgdata
+    networks:
+      - frontend
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  frontend:
+
+volumes:
+  db-data:
+  odoo-data:
