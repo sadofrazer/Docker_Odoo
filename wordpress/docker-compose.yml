@@ -3,6 +3,7 @@ services:
   wordpress:
     image: wordpress:5.7-php8.0-apache
     container_name: wordpress-web
+    restart: always
     depends_on:
       - wordpress-db
     environment:
